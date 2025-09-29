@@ -56,6 +56,9 @@ def autenticarUsuario():
             flash(f"{usuarioEncontrado.nome} logado com sucesso!")
 
             return redirect(url_for('homePage'))
+        else:
+            flash("Usuário ou senha invalido!")
+            return redirect(url_for('loginMusicas'))
     else:
          
          flash("Usuário ou senha invalido!")
