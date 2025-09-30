@@ -5,27 +5,27 @@
 {% block content %}
     <h2>Lista de Musicas</h2>
 
-        <h2>{{titulo}}</h2>
         <table class="table table-hover">
-                <thead class="table-dark">
+            <thead class="table-dark">
                 <tr>
                     <th>Musica</th>
                     <th>Cantor / Grupo / Banda</th>
-                    <th>Genero</th>                                  </th>
+                    <th>Genero</th>
+                    <th>Ações</th>                                 
                 </tr>
-                </thead>
+            </thead>
 
-                <tbody>
-                    {% for music in musicas %}
-                    <tr>
-                        <td>{{music.nome}}</td>
-                        <td>{{music.cantorGrupo}}</td>
-                        <td>{{music.genero}}</td>
-                    </tr>
-                    {% endfor%}
-                </tbody>
+            <tbody>
+                {% for music in musicas %}
+                <tr>
+                    <td>{{music.nome_musica}}</td>
+                    <td>{{music.cantor_musica}}</td>
+                    <td>{{music.genero_musica}}</td>
+                    <td><a href="{{url_for('editarMusica', id=music.id_musica)}}">Editar</a></td>
+                </tr>
+                {% endfor%}
+            </tbody>
                 
         </table>
-    </div>
 
 {% endblock %}

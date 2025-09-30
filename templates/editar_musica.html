@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar{% endblock %}
+
+{% block content %}
+    <h2>Editar Música</h2>
+
+    <form action="{{url_for('atualizar')}}" method="post">
+        <fieldset>
+
+            <input type="hidden" name="txtId" value="{{musica.id_musica}}">
+
+            <div class="mb-3">
+                <label for="txtNome">Nome da música:</label>
+                <input type="text" name="txtNome" id="txtNome" class="form-control"
+                class="form-control" value="{{musica.nome_musica}}">
+            </div>
+
+            <div class="mb-3">
+                <label for="txtCantorGrupo">Cantor/Banda/Grupo:</label>
+                <input type="text" name="txtCantorGrupo" id="txtCantorGrupo" class="form-control"
+                class="form-control" value="{{musica.cantor_musica}}">
+            </div>
+
+            <div class="mb-3">
+                <label for="txtGenero">Gênero:</label>
+                <input type="text" name="txtGenero" id="txtGenero" class="form-control"
+                class="form-control" value="{{musica.genero_musica}}">
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}
