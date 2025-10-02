@@ -5,25 +5,33 @@
 {% block content %}
     <h2>Cadastro de Música</h2>
 
-    <form action="/adicionar" method="post">
+    <form action="/adicionar" method="post" enctype="multipart/form-data">
         <fieldset>
+
+            {{  form.csrf_token() }}
+
             <div class="mb-3">
-                <label for="txtNome">Nome da música:</label>
-                <input type="text" name="txtNome" id="txtNome" class="form-control">
+                <label for="txtArquivo" class="form-label">Selecione a imagem capa do album</label>
+                <input class="form-control" type="file" id="txtArquivo" name="txtArquivo" accept=".jpg, .jpeg, .png">
+            </div>
+            <div class="mb-3">
+                {{ form.nome.label(class="form-label") }}
+                {{ form.nome(class="form-control") }}
             </div>
 
             <div class="mb-3">
-                <label for="txtCantorGrupo">Cantor/Banda/Grupo:</label>
-                <input type="text" name="txtCantorGrupo" id="txtCantorGrupo" class="form-control">
+                {{ form.grupo.label(class="form-label") }}
+                {{ form.grupo(class="form-control") }}                
             </div>
 
             <div class="mb-3">
-                <label for="txtGenero">Gênero:</label>
-                <input type="text" name="txtGenero" id="txtGenero" class="form-control">
+                {{ form.genero.label(class="form-label") }}
+                {{ form.genero(class="form-control") }}                  
             </div>
 
             <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Confirmar</button>
+                {{ form.cadastrar(class="btn btn-primary") }}
+               
             </div>
         </fieldset>
     </form>

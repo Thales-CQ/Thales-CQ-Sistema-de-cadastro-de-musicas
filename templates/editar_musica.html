@@ -5,32 +5,46 @@
 {% block content %}
     <h2>Editar Música</h2>
 
-    <form action="{{url_for('atualizar')}}" method="post">
+    <form action="{{url_for('atualizar')}}" method="post" enctype="multipart/form-data">
         <fieldset>
 
-            <input type="hidden" name="txtId" value="{{musica.id_musica}}">
+            {{  musica.csrf_token() }}
+                
 
-            <div class="mb-3">
-                <label for="txtNome">Nome da música:</label>
-                <input type="text" name="txtNome" id="txtNome" class="form-control"
-                class="form-control" value="{{musica.nome_musica}}">
-            </div>
+                    <figure class="img-thmbnail mb-3">
+                        <img class="img-fluid" src="{{ url_for('imagem', nome_imagem=album_musica)}}">
+                    
 
-            <div class="mb-3">
-                <label for="txtCantorGrupo">Cantor/Banda/Grupo:</label>
-                <input type="text" name="txtCantorGrupo" id="txtCantorGrupo" class="form-control"
-                class="form-control" value="{{musica.cantor_musica}}">
-            </div>
+                        <figcaption>
+                            <label for="txtArquivo" class="form-label">
+                                Selecione uma nova imagem
+                                <input type="file"  name="txtArquivo" id="txtArquivo" 
+                                accept=".jpg, .jpeg, .png" class="form-control">
+                            </label>
+                        </figcaption>
 
-            <div class="mb-3">
-                <label for="txtGenero">Gênero:</label>
-                <input type="text" name="txtGenero" id="txtGenero" class="form-control"
-                class="form-control" value="{{musica.genero_musica}}">
-            </div>
+                    </figure>
 
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Salvar</button>
-            </div>
+                    <input type="hidden" name="txtId" value="{{id}}">
+
+                    <div class="mb-3">
+                        {{ musica.nome.label(class="form-label") }}
+                            {{ musica.nome(class="form-control") }}
+                    </div>
+                        {{ musica.grupo.label(class="form-label") }}
+                            {{ musica.grupo(class="form-control") }}  
+                    <div class="mb-3">
+                        
+                    </div>
+                        {{ musica.genero.label(class="form-label") }}
+                            {{ musica.genero(class="form-control") }} 
+                    <div class="mb-3">
+                        
+                    </div>
+                        {{ musica.cadastrar(class="btn btn-primary") }} 
+                    <div class="mb-3">
+                        
+                
         </fieldset>
     </form>
 {% endblock %}
